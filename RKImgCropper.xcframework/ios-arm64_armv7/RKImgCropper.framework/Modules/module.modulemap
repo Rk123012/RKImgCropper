@@ -1,0 +1,11 @@
+framework module RKImgCropper {
+  umbrella header "RKImgCropper.h"
+
+  export *
+  module * { export * }
+}
+
+module RKImgCropper.Swift {
+    header "RKImgCropper-Swift.h"
+    requires objc
+}

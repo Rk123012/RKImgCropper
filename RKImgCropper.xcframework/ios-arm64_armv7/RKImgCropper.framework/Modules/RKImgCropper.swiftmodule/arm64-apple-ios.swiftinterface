@@ -1,0 +1,112 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RKImgCropper
+import AVFoundation
+@_exported import RKImgCropper
+import Swift
+import UIKit
+public protocol CropViewControllerDelegate : AnyObject {
+  func cropViewController(_ controller: RKImgCropper.CropViewController, didFinishCroppingImage image: UIKit.UIImage)
+  func cropViewController(_ controller: RKImgCropper.CropViewController, didFinishCroppingImage image: UIKit.UIImage, transform: CoreGraphics.CGAffineTransform, cropRect: CoreGraphics.CGRect)
+  func cropViewControllerDidCancel(_ controller: RKImgCropper.CropViewController)
+}
+@objc @_inheritsConvenienceInitializers open class CropViewController : UIKit.UIViewController {
+  weak open var delegate: RKImgCropper.CropViewControllerDelegate?
+  open var image: UIKit.UIImage? {
+    get
+    set
+  }
+  open var keepAspectRatio: Swift.Bool {
+    get
+    set
+  }
+  open var cropAspectRatio: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  open var cropRect: CoreGraphics.CGRect {
+    get
+    set
+  }
+  open var imageCropRect: CoreGraphics.CGRect {
+    get
+    set
+  }
+  open var toolbarHidden: Swift.Bool
+  open var rotationEnabled: Swift.Bool {
+    get
+    set
+  }
+  open var rotationTransform: CoreGraphics.CGAffineTransform {
+    get
+  }
+  open var zoomedCropRect: CoreGraphics.CGRect {
+    get
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc override dynamic open func loadView()
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  open func resetCropRect()
+  open func resetCropRectAnimated(_ animated: Swift.Bool)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class CropView : UIKit.UIView, UIKit.UIScrollViewDelegate, UIKit.UIGestureRecognizerDelegate {
+  open var image: UIKit.UIImage? {
+    get
+    set
+  }
+  open var imageView: UIKit.UIView? {
+    get
+    set
+  }
+  open var croppedImage: UIKit.UIImage? {
+    get
+  }
+  open var keepAspectRatio: Swift.Bool {
+    get
+    set
+  }
+  open var cropAspectRatio: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  open var rotation: CoreGraphics.CGAffineTransform {
+    get
+  }
+  open var rotationAngle: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  open var cropRect: CoreGraphics.CGRect {
+    get
+    set
+  }
+  open var imageCropRect: CoreGraphics.CGRect {
+    get
+    set
+  }
+  open var resizeEnabled: Swift.Bool {
+    get
+    set
+  }
+  open var showCroppedArea: Swift.Bool {
+    get
+    set
+  }
+  open var rotationGestureRecognizer: UIKit.UIRotationGestureRecognizer!
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @objc override dynamic open func layoutSubviews()
+  open func setRotationAngle(_ rotationAngle: CoreGraphics.CGFloat, snap: Swift.Bool)
+  open func resetCropRect()
+  open func resetCropRectAnimated(_ animated: Swift.Bool)
+  open func zoomedCropRect() -> CoreGraphics.CGRect
+  open func croppedImage(_ image: UIKit.UIImage) -> UIKit.UIImage
+  @objc open func viewForZooming(in scrollView: UIKit.UIScrollView) -> UIKit.UIView?
+  @objc open func scrollViewWillEndDragging(_ scrollView: UIKit.UIScrollView, withVelocity velocity: CoreGraphics.CGPoint, targetContentOffset: Swift.UnsafeMutablePointer<CoreGraphics.CGPoint>)
+  @objc open func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @objc deinit
+}
